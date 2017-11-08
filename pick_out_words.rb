@@ -1,10 +1,10 @@
-def find_similar_words(embed,text,refs,thresh)
+def find_similar_words(embed, text, refs, thresh)
   c = N.zeros(refs.size, embed.w.shape[1])
 
-  refs.map do |idx, term|
+  refs.each_with_index.map do |term, idx|
     next unless embed.vocab.key?(term)
 
-    c[idx, 0..-1] = embed.w[embed.vocab[term], 0..-1]
+    c[idx, true] = embed.w[embed.vocab[term], true]
   end
 
   tokens = text.split(' ')
@@ -13,10 +13,9 @@ def find_similar_words(embed,text,refs,thresh)
   found = []
   tokens.each_with_index.map do |term, idx|
     next unless embed.vocab.key?(term)
-    vec = embed.w[embed.vocab[term], 0..-1]
 
+    vec = embed.w[embed.vocab[term], true]
     cosines = c.dot(vec.transpose)
-
     score = cosines.mean
     scores[idx] = score
 

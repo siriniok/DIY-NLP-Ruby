@@ -18,16 +18,16 @@ class Embedding
     vocab_size = words.size
     vector_dim = vectors[ivocab[0]].size
 
-    w = N.zeros([vocab_size, vector_dim])
+    w = N.zeros(vocab_size, vector_dim)
     vectors.map do |word, v|
       next if word == '<unk>'
 
-      w[vocab[word], 0..-1] = v.clone
+      w[vocab[word], true] = v
     end
 
     # normalize each word vector to unit variance
     w_norm = N.zeros(w.shape)
-    d = ((w**2).sum(1)**(0.5))
+    d = (w**2).sum(axis: 1)**(0.5)
     w_norm = (w.transpose / d).transpose
 
     @w = w_norm
