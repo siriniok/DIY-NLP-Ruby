@@ -1,13 +1,17 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    numo-narray (0.9.0.9)
+    backports (3.10.3)
+    nmatrix (0.2.3)
+      packable (~> 1.3, >= 1.3.5)
+    packable (1.3.9)
+      backports
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  numo-narray
+  nmatrix
 
 BUNDLED WITH
    1.15.4
