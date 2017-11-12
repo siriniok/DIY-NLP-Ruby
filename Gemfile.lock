@@ -1,17 +1,13 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    backports (3.10.3)
-    nmatrix (0.2.3)
-      packable (~> 1.3, >= 1.3.5)
-    packable (1.3.9)
-      backports
+    narray (0.6.1.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  nmatrix
+  narray
 
 BUNDLED WITH
    1.15.4
